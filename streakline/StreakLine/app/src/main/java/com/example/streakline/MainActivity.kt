@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.text.FieldPosition
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,9 +32,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         rvTask.layoutManager = LinearLayoutManager(this)
-        adapter = TaskAdapter(tasks)
+        adapter = TaskAdapter(tasks) { deleteTask(it) }
         rvTask.adapter = adapter
 
+    }
+
+    private fun deleteTask(position:Int){
+        tasks.removeAt(position)
+        adapter.notifyDataSetChanged()
     }
 
     private fun initListeners() {
