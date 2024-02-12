@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.streakline.TaskApplication.Companion.prefs
 import java.text.FieldPosition
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
+        tasks = prefs.getTasks()
         rvTask.layoutManager = LinearLayoutManager(this)
         adapter = TaskAdapter(tasks) { deleteTask(it) }
         rvTask.adapter = adapter
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     private fun deleteTask(position:Int){
         tasks.removeAt(position)
         adapter.notifyDataSetChanged()
+        prefs.saveTasks(tasks)
     }
 
     private fun initListeners() {
@@ -51,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         tasks.add(taskToAdd)
         adapter.notifyDataSetChanged()
         etTask.setText("")
+        prefs.saveTasks(tasks)
     }
 
     private fun initView() {
