@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Tasks"
+        android:id="@+id/tasks"
+        android:icon="@drawable/tasks"/>
+    <item android:title="Profile"
+        android:id="@+id/profile"
+        android:icon="@drawable/profile"/>
+    <item android:title="Leaderboard"
+        android:id="@+id/leaderboard"
+        android:icon="@drawable/leaderboard"/>
+
+</menu>
