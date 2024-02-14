@@ -18,6 +18,7 @@ import com.example.todolist.presentation.adapter.CategoryAdapter
 import com.example.todolist.presentation.adapter.TasksAdapter
 import com.example.todolist.databinding.FragmentBaseBinding
 import com.example.todolist.data.model.TaskCategoryInfo
+import com.example.todolist.presentation.di.StreakManager
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -56,6 +57,7 @@ class BaseFragment : ParentFragment() {
         }
         initRecyclerView1()
         initRecyclerView2()
+        setupStreakButton()
 
         binding.fab.setOnClickListener {
             val action = BaseFragmentDirections.actionBaseFragmentToNewTaskFragment(null)
@@ -63,8 +65,6 @@ class BaseFragment : ParentFragment() {
         }
 
         viewModel.getUncompletedTask().observe(viewLifecycleOwner, Observer {
-            if(it.isEmpty()) binding.noResultAnimationView.visibility = View.VISIBLE
-            else binding.noResultAnimationView.visibility = View.GONE
             adapter.differ.submitList(it)
         })
 
@@ -107,6 +107,19 @@ class BaseFragment : ParentFragment() {
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
         itemTouchHelper.attachToRecyclerView(binding.tasksRecyclerView)
 
+    }
+
+    private fun setupStreakButton() {
+        binding.completeTaskButton.setOnClickListener {
+            // Increment the global streak
+            StreakManager.incrementStreak()
+
+            // Update the streak text view
+            binding.streakTextView.text = "STREAK: ${StreakManager.getStreak()}"
+
+            // Optionally, save the streak state and disable the button if needed
+            // Remember to re-enable it based on your conditions (e.g., next day)
+        }
     }
 
     private fun editTaskInformation(taskCategoryInfo: TaskCategoryInfo) {

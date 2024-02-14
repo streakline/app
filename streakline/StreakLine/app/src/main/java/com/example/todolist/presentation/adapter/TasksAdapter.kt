@@ -49,6 +49,7 @@ class TasksAdapter:
 
     inner class MyViewHolder(private val itemTaskBinding: ItemTaskBinding) : RecyclerView.ViewHolder(itemTaskBinding.root){
         fun bind(taskCategoryInfo: TaskCategoryInfo){
+
             itemTaskBinding.taskCategoryInfo = taskCategoryInfo
             itemTaskBinding.executePendingBindings()
 
@@ -67,6 +68,8 @@ class TasksAdapter:
 
         }
     }
+
+
 
     private var onItemClickListener :((TaskCategoryInfo)->Unit)?=null
     fun setOnItemClickListener(listener : (TaskCategoryInfo)->Unit){
