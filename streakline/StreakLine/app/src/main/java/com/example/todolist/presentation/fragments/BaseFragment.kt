@@ -19,6 +19,7 @@ import com.example.todolist.presentation.adapter.TasksAdapter
 import com.example.todolist.databinding.FragmentBaseBinding
 import com.example.todolist.data.model.TaskCategoryInfo
 import com.example.todolist.presentation.di.StreakManager
+import com.example.todolist.presentation.di.ToDoListApplication.Companion.prefs
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -110,9 +111,12 @@ class BaseFragment : ParentFragment() {
     }
 
     private fun setupStreakButton() {
+        StreakManager.counter = prefs.getInformation()
+        binding.streakTextView.text = "STREAK: ${StreakManager.getStreak()}"
         binding.completeTaskButton.setOnClickListener {
             // Increment the global streak
             StreakManager.incrementStreak()
+            prefs.saveInformation(StreakManager.counter)
 
             // Update the streak text view
             binding.streakTextView.text = "STREAK: ${StreakManager.getStreak()}"
