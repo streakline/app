@@ -20,8 +20,21 @@
             android:text="Leaderboard"
             android:textAlignment="center"
             android:textSize="23sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="361dp"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="333dp"
+            android:src="@drawable/leaderboard" />
 
     </RelativeLayout>
 
