@@ -56,4 +56,9 @@
             app:destination="@id/new_task_fragment"
             app:enterAnim="@anim/slide_up" />
     </fragment>
+    <fragment
+        android:id="@+id/leaderboard_fragment"
+        android:name="com.example.todolist.presentation.fragments.LeaderboardFragment"
+        android:label=""
+        tools:layout="@layout/fragment_leaderboard" />
 </navigation>
