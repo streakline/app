@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="cian">#00F7FF</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="sky">#59C2EC</color>
+    <color name="teal_700">#3A81A6</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue">#4d79ff</color>
-    <color name="red">#FF4D4D</color>
+    <color name="grey">#334C5C</color>
+    <color name="frost">#81B5EC</color>
+    <color name="dark_blue">#0948A5</color>
+    <color name="light_blue">#0D99FF</color>
 </resources>
